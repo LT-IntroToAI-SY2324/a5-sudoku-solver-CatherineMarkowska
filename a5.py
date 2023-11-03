@@ -14,7 +14,7 @@ def remove_if_exists(lst: Any, elem: Any) -> None:
     """
     if isinstance(lst, list) and elem in lst:
         lst.remove(elem)
-
+    
 
 # NOTE: The linter will complain at you due to the code using member variables like row,
 # num_nums_placed & size since you haven't added those in the constructor. Implement the
@@ -125,7 +125,7 @@ class Board:
         Returns:
             True if we've placed all numbers, False otherwise
         """
-        pass
+        return self.num_nums_placed == self.size * self.size 
 
     def update(self, row: int, column: int, assignment: int) -> None:
         """Assigns the given value to the cell given by passed in row and column
@@ -139,8 +139,10 @@ class Board:
             column - index of the column to assign
             assignment - value to place at given row, column coordinate
         """
-        pass
+        self.num_nums_placed += 1
 
+        if self.subgrid_coordinates() == row:
+            board.append(subgrid_coordinates)
 
 def DFS(state: Board) -> Board:
     """Performs a depth first search. Takes a Board and attempts to assign values to
@@ -179,7 +181,12 @@ if __name__ == "__main__":
     # print("<<<<<<<<<<<<<< Solving Sudoku >>>>>>>>>>>>>>")
 
     # def test_dfs_or_bfs(use_dfs: bool, moves: List[Tuple[int, int, int]]) -> None:
-    #     b = Board()
+    # b = Board()
+
+    b = Board()
+    print(b)
+    b.print_pretty()
+    b
     #     # make initial moves to set up board
     #     for move in moves:
     #         b.update(*move)
