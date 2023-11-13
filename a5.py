@@ -199,6 +199,7 @@ def DFS(state: Board) -> Board:
                 cpy = copy.deepcopy(curr)
                 cpy.update(row, col, sel)
                 the_stack.push(cpy)
+    return None
             # print(row, col, sel)
             # curr.update(row, col, sel[0])
             # curr.print_pretty()
@@ -355,7 +356,8 @@ if __name__ == "__main__":
     # g.rows[5][3] = []
     # print(g.find_most_constrained_cell())
     # print(g.failure_test())
-    DFS(g)
+    sol = DFS(g)
+    sol.print_pretty()
     # From the above print statement, you can see which numbers
     #  have been assigned to the board, and then create test
     #  cases by looking at the board and listing what values are
