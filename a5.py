@@ -187,9 +187,12 @@ def DFS(state: Board) -> Board:
     """
     the_stack = Stack() 
     the_stack.push(state)
+    count = 0
 
     while not the_stack.is_empty():
         curr = the_stack.pop()
+        count += 1
+        print("Iteration number:" + count)
         if curr.goal_test():
             return curr
         elif not curr.failure_test():
@@ -199,11 +202,8 @@ def DFS(state: Board) -> Board:
                 cpy = copy.deepcopy(curr)
                 cpy.update(row, col, sel)
                 the_stack.push(cpy)
+                print("Number of boards:" + the_stack.length())
     return None
-            # print(row, col, sel)
-            # curr.update(row, col, sel[0])
-            # curr.print_pretty()
-            # the_stack.push(curr)
 
 
 def BFS(state: Board) -> Board:
